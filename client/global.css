@@ -1,0 +1,760 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 260 100% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 9% 89%;
+    --muted-foreground: 240 5% 35%;
+
+    --accent: 280 100% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 85%;
+    --input: 240 10% 95%;
+    --ring: 260 100% 65%;
+
+    --radius: 0.75rem;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(260 100% 55%) 0%,
+      hsl(240 100% 50%) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(280 100% 60%) 0%,
+      hsl(260 100% 55%) 100%
+    );
+    --gradient-dark: linear-gradient(
+      135deg,
+      hsl(222.2 84% 4.9%) 0%,
+      hsl(220 84% 20%) 100%
+    );
+
+    /* Variables pour le gestionnaire de styles avancé */
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(210 40% 88%) 0%,
+      hsl(221 83% 53%) 100%
+    );
+    --gradient-background: linear-gradient(
+      135deg,
+      hsl(0 0% 100%) 0%,
+      hsl(210 40% 96.1%) 100%
+    );
+    --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+    --glow-intensity: 0.15;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 260 100% 75%;
+    --primary-foreground: 222.2 84% 4.9%;
+
+    --secondary: 240 100% 80%;
+    --secondary-foreground: 222.2 84% 4.9%;
+
+    --muted: 240 15% 20%;
+    --muted-foreground: 240 5% 70%;
+
+    --accent: 280 100% 85%;
+    --accent-foreground: 222.2 84% 4.9%;
+
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 222.2 84% 4.9%;
+
+    --border: 240 15% 25%;
+    --input: 240 15% 15%;
+    --ring: 217.2 91.2% 59.8%;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(260 100% 75%) 0%,
+      hsl(240 100% 80%) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(280 100% 85%) 0%,
+      hsl(260 100% 75%) 100%
+    );
+    --gradient-dark: linear-gradient(
+      135deg,
+      hsl(222.2 84% 4.9%) 0%,
+      hsl(220 84% 30%) 100%
+    );
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family:
+      "Inter",
+      "Segoe UI",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Amélioration de la lisibilité du texte */
+  .text-enhanced {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+  }
+
+  /* Contraste amélioré pour les éléments de navigation */
+  .nav-text {
+    color: hsl(var(--foreground));
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Amélioration du contraste pour les labels */
+  label,
+  .label-enhanced {
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Amélioration des overlays avec meilleur contraste */
+  .overlay-improved {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+  }
+
+  /* Texte sur fond sombre avec ombre portée */
+  .text-on-dark {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Boutons avec meilleur contraste */
+  .button-enhanced {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .button-enhanced:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Amélioration des tooltips */
+  .tooltip-enhanced {
+    background: rgba(17, 24, 39, 0.95);
+    border: 1px solid rgba(75, 85, 99, 0.8);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+
+  /* Amélioration du contraste général */
+  .contrast-enhanced {
+    filter: contrast(1.1) brightness(1.05);
+  }
+
+  /* Ombres portées renforcées pour les textes */
+  .drop-shadow-enhanced {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  }
+
+  /* Effets futuristes */
+  .futuristic-glow {
+    box-shadow:
+      0 0 20px rgba(0, 255, 255, 0.3),
+      0 0 40px rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+  }
+
+  .futuristic-hover:hover {
+    box-shadow:
+      0 0 30px rgba(0, 255, 255, 0.5),
+      0 0 60px rgba(0, 255, 255, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+
+  .neon-text {
+    text-shadow:
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+
+  .cyber-border {
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(
+      45deg,
+      rgba(0, 255, 255, 0.1),
+      rgba(255, 0, 255, 0.1)
+    );
+    border-image: linear-gradient(45deg, #00ffff, #ff00ff) 1;
+  }
+
+  .cyber-border::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00ffff, #ff00ff, #00ffff);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0.7;
+  }
+
+  /* Styles pour l'interface d'administration */
+  .admin-button {
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  }
+
+  .admin-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .admin-button-primary {
+    background: linear-gradient(
+      135deg,
+      hsl(158 64% 52%) 0%,
+      hsl(38 92% 50%) 100%
+    );
+    border-radius: 16px;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    color: white;
+  }
+
+  .admin-button-secondary {
+    background: linear-gradient(
+      135deg,
+      hsl(158 64% 42%) 0%,
+      hsl(158 64% 52%) 100%
+    );
+    border-radius: 14px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: white;
+  }
+
+  .admin-button-success {
+    background: linear-gradient(
+      135deg,
+      hsl(142 76% 45%) 0%,
+      hsl(162 76% 45%) 100%
+    );
+    border-radius: 18px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: white;
+  }
+
+  .admin-text {
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    font-weight: 500;
+    color: hsl(var(--foreground));
+  }
+
+  .admin-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: hsl(var(--foreground));
+  }
+
+  /* Système de positionnement pour boutons flottants admin */
+  .floating-admin-buttons {
+    position: fixed;
+    top: 70px;
+    right: 16px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .floating-admin-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    position: relative;
+  }
+
+  .floating-admin-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  }
+
+  .floating-admin-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.1)
+    );
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+
+  /* Organisation des boutons flottants à gauche pour l'administration */
+  .admin-floating-buttons-left {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    position: fixed;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 40;
+    align-items: center;
+  }
+
+  /* Ajustement des boutons flottants pour éviter les superpositions */
+  .floating-button-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 40;
+  }
+
+  .floating-button-left-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: fixed;
+    left: 400px;
+    bottom: 1.5rem;
+    z-index: 40;
+  }
+
+  /* Styles pour la sélection de palettes améliorée */
+  .palette-selected {
+    animation: palette-glow 2s ease-in-out infinite alternate;
+    box-shadow:
+      0 0 20px rgba(var(--primary), 0.3),
+      0 0 40px rgba(var(--primary), 0.1),
+      0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .palette-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .palette-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .palette-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .palette-shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes palette-glow {
+    0% {
+      box-shadow:
+        0 0 20px rgba(var(--primary), 0.3),
+        0 0 40px rgba(var(--primary), 0.1),
+        0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+      box-shadow:
+        0 0 30px rgba(var(--primary), 0.5),
+        0 0 60px rgba(var(--primary), 0.2),
+        0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  /* Animation de pulsation pour les éléments sélectionnés */
+  .pulse-selected {
+    animation: pulse-selection 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-selection {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+  }
+
+  /* Effet de surbrillance pour les couleurs sélectionnées */
+  .color-highlight {
+    position: relative;
+  }
+
+  .color-highlight::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 70%
+    );
+    opacity: 0;
+    animation: color-shine 3s ease-in-out infinite;
+  }
+
+  @keyframes color-shine {
+    0%,
+    100% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+  }
+
+  /* Amélioration du contraste pour les fonds blancs et noirs */
+  .contrast-enhanced-white {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #1a1a1a;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .contrast-enhanced-black {
+    background-color: rgba(26, 26, 26, 0.95);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Texte avec contraste élevé sur fond blanc */
+  .text-contrast-white {
+    color: #1a1a1a !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+  }
+
+  /* Texte avec contraste élevé sur fond noir */
+  .text-contrast-black {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+  }
+
+  /* Boutons avec contraste amélioré */
+  .btn-contrast-white {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    border: 2px solid #1e40af;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  }
+
+  .btn-contrast-white:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-contrast-black {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    color: #1a1a1a;
+    border: 2px solid #2563eb;
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+  }
+
+  .btn-contrast-black:hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    box-shadow: 0 6px 16px rgba(96, 165, 250, 0.4);
+    transform: translateY(-1px);
+  }
+
+  /* Cards avec contraste amélioré */
+  .card-contrast-white {
+    background: rgba(255, 255, 255, 0.98);
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(8px);
+  }
+
+  .card-contrast-black {
+    background: rgba(26, 26, 26, 0.98);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 4px 20px rgba(255, 255, 255, 0.08),
+      0 2px 8px rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+  }
+
+  /* Inputs avec contraste amélioré */
+  .input-contrast-white {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    color: #1a1a1a;
+  }
+
+  .input-contrast-white:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .input-contrast-black {
+    background: rgba(26, 26, 26, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+  }
+
+  .input-contrast-black:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+  }
+
+  /* Navigation avec contraste amélioré */
+  .nav-contrast-white {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-contrast-black {
+    background: rgba(26, 26, 26, 0.95);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Liens avec contraste amélioré */
+  .link-contrast-white {
+    color: #1d4ed8;
+    text-decoration: underline;
+    text-decoration-color: rgba(29, 78, 216, 0.3);
+    font-weight: 600;
+  }
+
+  .link-contrast-white:hover {
+    color: #1e3a8a;
+    text-decoration-color: #1e3a8a;
+  }
+
+  .link-contrast-black {
+    color: #60a5fa;
+    text-decoration: underline;
+    text-decoration-color: rgba(96, 165, 250, 0.5);
+    font-weight: 600;
+  }
+
+  .link-contrast-black:hover {
+    color: #93c5fd;
+    text-decoration-color: #93c5fd;
+  }
+
+  /* Accessibilité */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .focus:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Contraste élevé */
+  .high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    --border: 0 0% 100%;
+    --input: 0 0% 20%;
+  }
+
+  .high-contrast * {
+    background-color: black !important;
+    color: white !important;
+    border-color: white !important;
+  }
+
+  .high-contrast button,
+  .high-contrast .btn,
+  .high-contrast [role="button"] {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid white !important;
+  }
+
+  /* Mouvement réduit */
+  .reduced-motion *,
+  .reduced-motion *::before,
+  .reduced-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Focus visible amélioré */
+  .focus-visible *:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+  }
+
+  /* Mode daltonien */
+  .protanopia {
+    filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='protanopia'%3E%3CfeColorMatrix values='0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0'/%3E%3C/filter%3E%3C/svg%3E#protanopia");
+  }
+
+  .deuteranopia {
+    filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='deuteranopia'%3E%3CfeColorMatrix values='0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0'/%3E%3C/filter%3E%3C/svg%3E#deuteranopia");
+  }
+
+  .tritanopia {
+    filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='tritanopia'%3E%3CfeColorMatrix values='0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0'/%3E%3C/filter%3E%3C/svg%3E#tritanopia");
+  }
+
+  /* Taille de police dynamique */
+  html {
+    font-size: var(--base-font-size, 16px);
+  }
+
+  /* Espacement du texte amélioré */
+  .accessibility-spacing * {
+    line-height: calc(1.4 * var(--text-spacing, 1));
+    letter-spacing: calc(0.1em * var(--text-spacing, 1));
+  }
+}

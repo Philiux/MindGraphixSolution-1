@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  # Base de données PostgreSQL
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mindgraphix
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # API Gateway
+  gateway:
+    build: ./backend/gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - AUTH_SERVICE_URL=http://auth:8001
+      - USER_SERVICE_URL=http://users:8002
+      - PROJECT_SERVICE_URL=http://projects:8003
+      - SERVICE_SERVICE_URL=http://services:8004
+      - CONTACT_SERVICE_URL=http://contact:8005
+    depends_on:
+      - auth
+      - users
+      - projects
+      - services
+      - contact
+
+  # Service d'authentification
+  auth:
+    build: ./backend/auth-service
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/mindgraphix_auth
+    depends_on:
+      - postgres
+
+  # Service utilisateur
+  users:
+    build: ./backend/user-service
+    ports:
+      - "8002:8002"
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/mindgraphix_user
+    depends_on:
+      - postgres
+
+  # Service de projets
+  projects:
+    build: ./backend/project-service
+    ports:
+      - "8003:8003"
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/mindgraphix_project
+    depends_on:
+      - postgres
+
+  # Service de services
+  services:
+    build: ./backend/service-service
+    ports:
+      - "8004:8004"
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/mindgraphix_service
+    depends_on:
+      - postgres
+
+  # Service de contact
+  contact:
+    build: ./backend/contact-service
+    ports:
+      - "8005:8005"
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/mindgraphix_contact
+    depends_on:
+      - postgres
+
+  # Frontend Next.js
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    depends_on:
+      - gateway
+
+volumes:
+  postgres_data:

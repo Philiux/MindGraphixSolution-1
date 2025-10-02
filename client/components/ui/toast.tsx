@@ -52,8 +52,18 @@ ToastViewport.displayName = "ToastViewport";
 
 const Toast = React.forwardRef<
   React.ElementRef<"li">,
-  React.ComponentPropsWithoutRef<"li"> & VariantProps<typeof toastVariants>
->(({ className, variant, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"li"> & VariantProps<typeof toastVariants> & {
+    onOpenChange?: (open: boolean) => void;
+    open?: boolean;
+  }
+>(({ className, variant, onOpenChange, open, ...props }, ref) => {
+  React.useEffect(() => {
+    if (typeof onOpenChange === "function") {
+      onOpenChange(Boolean(open));
+    }
+  }, [open, onOpenChange]);
+
+  // Do not forward non-standard event props to DOM to avoid React warnings
   return (
     <li
       ref={ref}

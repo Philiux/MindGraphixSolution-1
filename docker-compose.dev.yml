@@ -1,16 +1,20 @@
-version: "3.8"
-
 services:
   app:
     build: .
-    container_name: fusion_app
-    ports:
-      - "8080:8080"
+    container_name: fusion_app_dev
+    command: npm run dev
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
+      - PORT=8080
       - DATABASE_URL=postgresql://mind:mindpass@db:5432/mindgraphix
       - SMTP_HOST=mailhog
       - SMTP_PORT=1025
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/app:cached
+      - /app/node_modules
+    working_dir: /app
     depends_on:
       - db
       - mailhog
@@ -18,7 +22,7 @@ services:
 
   db:
     image: postgres:15
-    container_name: fusion_db
+    container_name: fusion_db_dev
     environment:
       POSTGRES_USER: mind
       POSTGRES_PASSWORD: mindpass
@@ -31,17 +35,17 @@ services:
 
   adminer:
     image: adminer
-    container_name: fusion_adminer
+    container_name: fusion_adminer_dev
     ports:
       - "8081:8080"
     restart: unless-stopped
 
   mailhog:
     image: mailhog/mailhog
-    container_name: fusion_mailhog
+    container_name: fusion_mailhog_dev
     ports:
-      - "1025:1025" # SMTP
-      - "8025:8025" # Web UI
+      - "1025:1025"
+      - "8025:8025"
     restart: unless-stopped
 
 volumes:

@@ -100,7 +100,7 @@ export const QuickStartGuide: React.FC = () => {
         navigate("/client-dashboard");
         markStepCompleted("dashboard");
       },
-      actionLabel: "Mon espace",
+      actionLabel: "Espace Client",
     },
     {
       id: "requests",

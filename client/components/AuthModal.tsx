@@ -312,7 +312,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     type="text"
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg text-gray-900 dark:text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                     placeholder="Votre nom complet"
                     required
                   />
@@ -333,7 +333,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   type="email"
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg text-gray-900 dark:text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   placeholder="votre@email.com"
                   required
                 />
@@ -359,7 +359,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   onChange={(e) =>
                     handleInputChange("password", e.target.value)
                   }
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg text-gray-900 dark:text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   placeholder="••••••••"
                   required
                 />
@@ -389,7 +389,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     onChange={(e) =>
                       handleInputChange("confirmPassword", e.target.value)
                     }
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg text-gray-900 dark:text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                     placeholder="••••••••"
                     required
                   />
@@ -425,7 +425,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                       onChange={(e) =>
                         handleInputChange("securityAnswer", e.target.value)
                       }
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg text-gray-900 dark:text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                       placeholder="Votre réponse..."
                       required
                     />
@@ -451,7 +451,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                             e.target.value,
                           )
                         }
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg text-gray-900 dark:text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder="Votre réponse..."
                         required
                       />
@@ -582,7 +582,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   disabled={isLoading}
                   className="flex items-center justify-center space-x-2 py-3 hover:bg-gray-50"
                 >
-                  <span className="text-lg">🌐</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className="mr-1">
+                    <path d="M21.35 11.1h-9.17v2.99h5.26c-.23 1.42-1.02 2.62-2.17 3.43v2.84h3.5c2.05-1.89 3.27-4.67 3.27-8.26 0-.79-.07-1.56-.19-2.31z" fill="#4285F4"/>
+                    <path d="M12.18 22c2.95 0 5.43-0.98 7.24-2.66l-3.5-2.84c-0.98 0.66-2.23 1.05-3.74 1.05-2.87 0-5.3-1.94-6.17-4.53H2.27v2.85C4.05 19.86 7.7 22 12.18 22z" fill="#34A853"/>
+                    <path d="M6.01 13.02a6.98 6.98 0 010-4.04V6.13H2.27a10.01 10.01 0 000 11.74l3.74-2.98z" fill="#FBBC05"/>
+                    <path d="M12.18 4.5c1.6 0 3.04.55 4.18 1.63l3.12-3.12C17.59 1.18 15.11 0 12.18 0 7.7 0 4.05 2.14 2.27 5.63l3.74 2.85C6.88 6.44 9.31 4.5 12.18 4.5z" fill="#EA4335"/>
+                  </svg>
                   <span>Google</span>
                 </Button>
                 <Button
@@ -608,7 +613,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   disabled={isLoading}
                   className="flex items-center justify-center space-x-2 py-3 hover:bg-gray-50"
                 >
-                  <span className="text-lg">📘</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden className="mr-1">
+                    <path d="M22 12.07C22 6.48 17.52 2 11.93 2 6.34 2 2 6.48 2 12.07 2 17.03 5.66 21.12 10.5 22v-6.99H8.36v-2.94h2.14V9.41c0-2.12 1.26-3.28 3.1-3.28.9 0 1.84.16 1.84.16v2.02h-1.03c-1.01 0-1.32.62-1.32 1.26v1.51h2.24l-.36 2.94h-1.88V22C18.34 21.12 22 17.03 22 12.07z" fill="#1877F2"/>
+                  </svg>
                   <span>Facebook</span>
                 </Button>
               </div>

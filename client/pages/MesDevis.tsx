@@ -212,7 +212,7 @@ export default function MesDevis() {
                 className="flex items-center space-x-2 px-3 py-2 text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
               >
                 <User className="w-4 h-4" />
-                <span className="text-sm">Mon Espace</span>
+                <span className="text-sm">Espace Client</span>
               </Link>
 
               <div className="flex items-center space-x-2">

@@ -154,13 +154,6 @@ export const EnhancedHeader: React.FC<EnhancedHeaderProps> = ({
     return [
       ...baseNavItems,
       {
-        label: "Mon Espace",
-        href: "/client-dashboard",
-        type: "route",
-        icon: User,
-        description: "Mon espace personnel",
-      },
-      {
         label: "Mes Demandes",
         href: "/mes-devis",
         type: "route",
@@ -384,7 +377,7 @@ export const EnhancedHeader: React.FC<EnhancedHeaderProps> = ({
                             className="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-50 transition-colors"
                           >
                             <User size={16} />
-                            <span>Mon Espace</span>
+                            <span>Espace Client</span>
                           </Link>
                         )}
 
@@ -572,7 +565,7 @@ export const EnhancedHeader: React.FC<EnhancedHeaderProps> = ({
                             className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                           >
                             <User size={16} className="mr-2" />
-                            Mon Espace
+                            Espace Client
                           </Button>
                         )}
 

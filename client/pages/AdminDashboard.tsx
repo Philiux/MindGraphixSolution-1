@@ -78,6 +78,7 @@ import { AdminParametersView } from "../components/AdminParametersView";
 import { ModernAdminTheme } from "../components/ModernAdminTheme";
 import { SystemDashboard } from "../components/SystemDashboard";
 import SupremeAIAssistant from "../components/SupremeAIAssistant";
+import AIQuestionnaire from "../components/AIQuestionnaire";
 
 // Interface pour les statistiques de performance
 interface PerformanceMetric {
@@ -694,7 +695,7 @@ export default function AdminDashboard() {
                     <motion.h1
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
+                      className="text-2xl font-bold text-gray-900 dark:text-white"
                     >
                       Mind Dashboard
                     </motion.h1>
@@ -2929,7 +2930,10 @@ export default function AdminDashboard() {
       </div>
 
       {/* IA Suprême - Exclusif Super Administrateurs */}
-      <SupremeAIAssistant />
-    </ModernAdminTheme>
+  <div className="px-6 lg:px-8">
+    <AIQuestionnaire />
+  </div>
+  <SupremeAIAssistant />
+</ModernAdminTheme>
   );
 }

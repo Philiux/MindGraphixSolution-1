@@ -22,7 +22,11 @@
   },
   "dependencies": {
     "express": "^4.18.2",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "pg": "^8.10.0",
+    "dotenv": "^16.3.1",
+    "nodemailer": "^6.9.4",
+    "puppeteer": "^21.3.8"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.9.0",

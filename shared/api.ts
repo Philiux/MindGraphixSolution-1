@@ -10,3 +10,5 @@
 export interface DemoResponse {
   message: string;
 }
+
+export type { Quote } from './quote';

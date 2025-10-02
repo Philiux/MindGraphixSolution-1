@@ -22,7 +22,7 @@ import {
   Shield,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { quoteService } from "@/services/quoteService";
+import quoteService from "@/services/quoteService";
 
 const DemandeDevis: React.FC = () => {
   const navigate = useNavigate();

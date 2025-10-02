@@ -14,10 +14,13 @@ import ClientDashboard from "./pages/ClientDashboard";
 import NotFound from "./pages/NotFound";
 import Test from "./pages/Test";
 import DemandeDevis from "./pages/DemandeDevis";
+import Recrutement from "./pages/Recrutement";
 import QuoteSent from "./pages/QuoteSent";
 import QuoteConfirmation from "./pages/QuoteConfirmation";
 import QuoteManagement from "./pages/QuoteManagement";
 import MesDevis from "./pages/MesDevis";
+import AdminDevis from "./pages/AdminDevis";
+import AdminApplications from "./pages/AdminApplications";
 import { AdminRoute } from "./components/AdminRoute";
 
 import AppHealthCheckerWrapper from "./components/AppHealthCheckerWrapper";
@@ -61,6 +64,8 @@ export default function App() {
                           path="/demande-devis"
                           element={<DemandeDevis />}
                         />
+
+                        <Route path="/recrutement" element={<Recrutement />} />
                         <Route path="/quote-sent" element={<QuoteSent />} />
                         <Route
                           path="/quote/:quoteId"
@@ -76,6 +81,24 @@ export default function App() {
                           element={
                             <AdminRoute>
                               <QuoteManagement />
+                            </AdminRoute>
+                          }
+                        />
+
+                        <Route
+                          path="/admin/devis"
+                          element={
+                            <AdminRoute>
+                              <AdminDevis />
+                            </AdminRoute>
+                          }
+                        />
+
+                        <Route
+                          path="/admin/applications"
+                          element={
+                            <AdminRoute>
+                              <AdminApplications />
                             </AdminRoute>
                           }
                         />
